@@ -13,7 +13,7 @@ public class ArticulationBodyFigureGenerator : GeneratorBase
     public HumanBodyBones torsoReference = HumanBodyBones.UpperChest;
     int numActionDims;
     public bool disableLimits;
-    public int solverIterations = 10;//255;//255 is used to make stabilizer work
+    public int solverIterations = 255;//255;//255 is used to make stabilizer work
 
     override public void Generate()
     {
@@ -80,7 +80,6 @@ public class ArticulationBodyFigureGenerator : GeneratorBase
         pos.y += headOffset;
         o.transform.position = pos;
         o.transform.parent = parent;
-        Debug.Log("head");
     }
 
 

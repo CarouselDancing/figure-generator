@@ -34,7 +34,7 @@ public abstract class GeneratorBase : MonoBehaviour
     public List<string> endEffectors;
     public bool generated = false;
     public bool DestroyWhenDone = true;
-    public bool verbose = true;
+    public bool verbose = false;
     public int version = 1;
     public int figureType =0;
 
@@ -95,7 +95,7 @@ public abstract class GeneratorBase : MonoBehaviour
         int nChildren = node.childCount;
         if (nChildren == 0) // && !isRightFoot && !isLeftFoot && !isHead
         {
-            Debug.Log("leave" + node.name);
+            if(verbose)Debug.Log("leave" + node.name);
             ignore = true;
         }
         bool ignoreChild = false;

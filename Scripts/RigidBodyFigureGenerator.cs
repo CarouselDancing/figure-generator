@@ -54,7 +54,6 @@ public class RigidBodyFigureGenerator : GeneratorBase
         pos.y += headOffset;
         o.transform.position = pos;
         o.transform.parent = parent;
-        if (verbose) Debug.Log("head");
          if(!isKinematic){
             createJoint(rb,  rb.transform.parent, true);
          }
