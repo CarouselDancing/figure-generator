@@ -2,6 +2,9 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+namespace Carousel
+{
+
 
 public abstract class RagDollPDControllerBase : MonoBehaviour
 {
@@ -12,4 +15,6 @@ public abstract class RagDollPDControllerBase : MonoBehaviour
      public bool active = true;
 
       public abstract void OnEpisodeBegin();
+}
+
 }

@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 
+namespace Carousel{
+    
 public class PhysicsPoseProvider : PoseProviderBase
 {
     public ConfigurableJoint stabilizer;
@@ -106,4 +108,24 @@ public class PhysicsPoseProvider : PoseProviderBase
             }
         }
     }
+
+    
+    public void CopyStatesFrom(GameObject srcObject)
+    {
+        //GetComponent<Animator>().applyRootMotion = false;
+       Debug.Log("CopyStatesFrom"+name+srcObject.name);
+        var srcs = srcObject.GetComponentsInChildren<Transform>().ToList();
+        var srcRoot = srcs.FirstOrDefault(x => x.name == rootName);
+        var dstRoot = GetComponentsInChildren<Transform>().First(x => x.name == rootName);
+        if(srcRoot == null){
+            return;
+        }
+        transform.position = srcObject.transform.position;
+        transform.rotation = srcObject.transform.rotation;
+        dstRoot.transform.localPosition = srcRoot.localPosition;
+        dstRoot.transform.localRotation = srcRoot.localRotation;
+        //GetComponent<Animator>().applyRootMotion = true;
+    }
+
 }
+} 

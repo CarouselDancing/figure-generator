@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Carousel{
+    
+namespace FigureGenerator{
+
 public class FixPose : MonoBehaviour
 {
     [Serializable]
@@ -37,5 +41,8 @@ public class FixPose : MonoBehaviour
         l.t.localRotation = Quaternion.Inverse(l.t.parent.rotation) * rotation.normalized;
     }
 
+
+}
+}
 
 }

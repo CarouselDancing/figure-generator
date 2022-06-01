@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+namespace Carousel{
+    
+namespace FigureGenerator{
+
+
+
 public class PrefabFigureScaler : MonoBehaviour
 {
 
@@ -96,4 +102,7 @@ public class PrefabFigureScaler : MonoBehaviour
         
     }
 
+}
+
+}
 }

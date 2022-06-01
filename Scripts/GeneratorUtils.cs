@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Carousel{
+    
+namespace FigureGenerator{
+
 public class GeneratorUtils : MonoBehaviour
 {
 
@@ -113,4 +117,7 @@ public class GeneratorUtils : MonoBehaviour
         return found;
     }
 
+}
+
+}
 }

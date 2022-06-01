@@ -5,6 +5,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
+namespace Carousel{
+    
 
 
 public class RagDollPDController : RagDollPDControllerBase
@@ -362,5 +364,7 @@ public class RagDollPDController : RagDollPDControllerBase
         
     }
 
+
+}
 
 }

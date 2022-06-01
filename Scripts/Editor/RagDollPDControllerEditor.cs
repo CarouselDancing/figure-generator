@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+namespace Carousel
+{
 
 [CustomEditor(typeof(RagDollPDController))]
 public class RagDollPDControllerEditor : Editor
@@ -24,4 +26,5 @@ public class RagDollPDControllerEditor : Editor
             c.Deactivate();
         }
     }
+}
 }

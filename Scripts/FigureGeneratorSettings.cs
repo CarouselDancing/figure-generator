@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 //using UnityEngine.PhysicsModule;
 
+namespace Carousel{
+    
+namespace FigureGenerator{
+
 [System.Serializable]
 public class HumanoidMusclePower
 {
@@ -69,3 +73,6 @@ public class FigureGeneratorSettings : MonoBehaviour
    // public PhysicsMaterial actorMaterial;
 }
 
+
+}
+}

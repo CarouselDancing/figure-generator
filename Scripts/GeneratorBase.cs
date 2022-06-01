@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+
+namespace Carousel{
+    
+namespace FigureGenerator{
+
+    
+
 public abstract class GeneratorBase : MonoBehaviour
 {
     [Serializable]
@@ -203,5 +210,6 @@ public abstract class GeneratorBase : MonoBehaviour
     }
 }
 
+}
 
-
+}

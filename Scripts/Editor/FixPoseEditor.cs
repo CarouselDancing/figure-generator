@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+namespace Carousel
+{
+    
+namespace FigureGenerator{
 
 [CustomEditor(typeof(FixPose))]
 public class FixPoseEditor : Editor
@@ -18,4 +22,7 @@ public class FixPoseEditor : Editor
             c.OrientLimbs();
         }
     }
+}
+
+}
 }

@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+namespace Carousel{
+    
+namespace FigureGenerator{
+
 
 class HumanoidSettingsGenerator
 {
@@ -183,4 +187,6 @@ class HumanoidSettingsGenerator
         settings.endEffectors.Add(anim.GetBoneTransform(HumanBodyBones.LeftHand).name);
     }
 
+}
+}
 }

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+namespace Carousel
+{
+    
 public class RuntimeMirroring : PhysicsPoseProvider
 {
     public enum MirrorMode
@@ -328,38 +331,6 @@ public class RuntimeMirroring : PhysicsPoseProvider
         gameObject.SetActive(true);
     }
 
-    static public void ApplyMirroring(Transform src, Transform dst, MirrorSettings settings, string rootName)
-    {
-        Matrix4x4 mirrorMatrix = new Matrix4x4();
-        mirrorMatrix.m00 = settings.mirrorVector.x;
-        mirrorMatrix.m11 = settings.mirrorVector.y;
-        mirrorMatrix.m22 = settings.mirrorVector.z;
-        mirrorMatrix.m33 = 1;
-
-        var _transforms = dst.GetComponentsInChildren<Transform>().ToList();
-        var _srcTransforms = src.GetComponentsInChildren<Transform>().ToList();
-
-        var rootT = _srcTransforms.First(x => x.name == rootName);
-        var rootRotation = Quaternion.Euler(0, rootT.rotation.eulerAngles.y, 0);
-        var worldToLocal = Quaternion.Inverse(rootRotation);
-        var _relativeRootOffset = rootRotation * settings.mirrorRootOffset;
-        foreach (var m in settings.jointMap)
-        {
-
-            var srcT = _srcTransforms.First(x => x.name == m.refName);
-            var dstT = _transforms.First(x => x.name == m.name);
-            var relativePos = worldToLocal * (srcT.position - rootT.position);
-            var matrix = mirrorMatrix * Matrix4x4.TRS(relativePos, worldToLocal * srcT.rotation, Vector3.one) * mirrorMatrix;
-
-
-            dstT.rotation = rootRotation * matrix.rotation;
-            dstT.localRotation *= Quaternion.Euler(0, 180, 0);
-
-            Vector3 delta = matrix.GetColumn(3);
-            dstT.position = _relativeRootOffset + rootT.position + rootRotation * delta;
-        }
-    }
-    
     public void SetExternalTargetPosition(Vector3 t){
         externalPosition = t;
     }
@@ -370,5 +341,8 @@ public class RuntimeMirroring : PhysicsPoseProvider
             rootPosSet = false;
             MirrorPose();
     }
+
+}
+
 
 }

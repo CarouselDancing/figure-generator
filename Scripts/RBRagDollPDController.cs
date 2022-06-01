@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+namespace Carousel
+{
+    
 
 public class RBRagDollPDController : RagDollPDControllerBase
 {
@@ -140,11 +143,7 @@ public class RBRagDollPDController : RagDollPDControllerBase
         }
         return _mocapTargets;
     }    
-    
-  
-
-    
-
-
+ 
+}
 
 }

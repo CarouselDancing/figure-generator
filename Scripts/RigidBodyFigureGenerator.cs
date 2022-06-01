@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+
+namespace Carousel{
+ namespace FigureGenerator{
+
+
+
 public class RigidBodyFigureGenerator : GeneratorBase
 {
     
@@ -286,6 +292,7 @@ public class RigidBodyFigureGenerator : GeneratorBase
         }
     }
 
-
+}
+}
 
 }
