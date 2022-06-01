@@ -37,6 +37,7 @@ public abstract class GeneratorBase : MonoBehaviour
     public bool verbose = false;
     public int version = 1;
     public int figureType =0;
+    public List<string> IgnoreList;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +91,7 @@ public abstract class GeneratorBase : MonoBehaviour
 
     public void CreatePhyscisBody(Transform node, Transform parent, bool ignore)
     {
+        if(IgnoreList.Count > 0 && IgnoreList.Contains(node.name))return;
         bool rotate = false;
         float scale = 1;
         int nChildren = node.childCount;
