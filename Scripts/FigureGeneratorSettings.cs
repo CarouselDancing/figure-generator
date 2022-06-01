@@ -20,19 +20,7 @@ public class HumanoidMusclePower
     }
 }
 
-[Serializable]
-public class MirrorSettings
-{
 
-    public Vector3 mirrorVector;
-    public Vector3 mirrorRootOffset;
-
-    public List<FigureGeneratorSettings.RefBodyMapping> jointMap;
-    public RuntimeMirroring.MirrorMode mode;
-    public bool groundFeet = false;
-    public string footTipName;
-    public RuntimeMirroring.TranslationMode translationMode;
-};
 public class FigureGeneratorSettings : MonoBehaviour
 {
     [Serializable]

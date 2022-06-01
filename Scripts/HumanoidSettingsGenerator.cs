@@ -57,45 +57,6 @@ class HumanoidSettingsGenerator
     }
 
 
-    public static List<RuntimeMirroring.JointMap> CreateHumanoidMirrorMap(GameObject model)
-    {
-        var anim = model.GetComponent<Animator>();
-        var jointMap = new List<RuntimeMirroring.JointMap>();
-        var leftLeg = anim.GetBoneTransform(HumanBodyBones.RightUpperLeg).name;
-        var rightLeg = anim.GetBoneTransform(HumanBodyBones.LeftUpperLeg).name;
-        jointMap.Add(new RuntimeMirroring.JointMap { src = leftLeg, dst = rightLeg });
-        jointMap.Add(new RuntimeMirroring.JointMap { src = rightLeg, dst = leftLeg });
-        var leftLowerLeg = anim.GetBoneTransform(HumanBodyBones.RightLowerLeg).name;
-        var rightLowerLeg = anim.GetBoneTransform(HumanBodyBones.LeftLowerLeg).name;
-        jointMap.Add(new RuntimeMirroring.JointMap { src = leftLowerLeg, dst = rightLowerLeg });
-        jointMap.Add(new RuntimeMirroring.JointMap { src = rightLowerLeg, dst = leftLowerLeg });
-        var leftFoot = anim.GetBoneTransform(HumanBodyBones.LeftFoot).name;
-        var rightFoot = anim.GetBoneTransform(HumanBodyBones.RightFoot).name;
-        jointMap.Add(new RuntimeMirroring.JointMap { src = leftFoot, dst = rightFoot });
-        jointMap.Add(new RuntimeMirroring.JointMap { src = rightFoot, dst = leftFoot });
-
-
-        var hips = anim.GetBoneTransform(HumanBodyBones.Hips).name;
-        jointMap.Add(new RuntimeMirroring.JointMap { src = hips, dst = hips });
-        var spine = anim.GetBoneTransform(HumanBodyBones.Spine).name;
-        jointMap.Add(new RuntimeMirroring.JointMap { src = spine, dst = spine });
-        var chest = anim.GetBoneTransform(HumanBodyBones.Chest).name;
-        jointMap.Add(new RuntimeMirroring.JointMap { src = chest, dst = chest });
-        var upperChest = anim.GetBoneTransform(HumanBodyBones.Chest).name;
-        jointMap.Add(new RuntimeMirroring.JointMap { src = upperChest, dst = upperChest });
-        var head = anim.GetBoneTransform(HumanBodyBones.Head).name;
-        jointMap.Add(new RuntimeMirroring.JointMap { src = head, dst = head });
-        var leftArm = anim.GetBoneTransform(HumanBodyBones.RightUpperArm).name;
-        var rightArm = anim.GetBoneTransform(HumanBodyBones.LeftUpperArm).name;
-        jointMap.Add(new RuntimeMirroring.JointMap { src = leftArm, dst = rightArm });
-        jointMap.Add(new RuntimeMirroring.JointMap { src = rightArm, dst = leftArm });
-        var leftLowerArm = anim.GetBoneTransform(HumanBodyBones.RightLowerArm).name;
-        var rightLowerArm = anim.GetBoneTransform(HumanBodyBones.LeftLowerArm).name;
-        jointMap.Add(new RuntimeMirroring.JointMap { src = leftLowerArm, dst = rightLowerArm });
-        jointMap.Add(new RuntimeMirroring.JointMap { src = rightLowerArm, dst = leftLowerArm });
-
-        return jointMap;
-    }
 
     public static List<HumanoidMusclePower> CreateHumanoidMusclePowers()
     {
