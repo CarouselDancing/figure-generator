@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
-
 namespace Carousel{
     
 public class PhysicsPoseProvider : PoseProviderBase
@@ -10,6 +9,7 @@ public class PhysicsPoseProvider : PoseProviderBase
     public ConfigurableJoint stabilizer;
 
     public string rootName;
+    public string armatureName = "";
 
     // Update is called once per frame
     void FixedUpdate()
@@ -47,8 +47,9 @@ public class PhysicsPoseProvider : PoseProviderBase
        gameObject.SetActive(false);
         UpdatePose();
         var targets = target.GetComponentsInChildren<ArticulationBody>().ToList();
-        var root = targets.FirstOrDefault(x => x.isRoot);
-        if(root == null){
+        var targetRoot = targets.FirstOrDefault(x => x.isRoot);
+        if(targetRoot == null){
+            Debug.Log("no success");
             gameObject.SetActive(true);
             return;
         }
@@ -57,16 +58,23 @@ public class PhysicsPoseProvider : PoseProviderBase
         //change game object transform
         target.transform.position = transform.position;
         target.transform.rotation = transform.rotation;
-
-        var src = GetComponentsInChildren<Transform>().First(x => x.name == rootName);
-        root.transform.localPosition = src.localPosition;
-        root.transform.localRotation = src.localRotation;
+        if(armatureName != ""){
+            var srcA = GetComponentsInChildren<Transform>().First(x => x.name == armatureName);
+            var targetA = target.GetComponentsInChildren<Transform>().First(x => x.name == armatureName);
+            if (srcA != null && targetA != null){
+                targetA.transform.localPosition = srcA.localPosition;
+                targetA.transform.localRotation = srcA.localRotation;
+            }
+        }
+        var srcRoot = GetComponentsInChildren<Transform>().First(x => x.name == rootName);
+        targetRoot.transform.localPosition =srcRoot.localPosition;
+        targetRoot.transform.localRotation = srcRoot.localRotation;
         //teleport root
-        root.GetComponent<ArticulationBody>().TeleportRoot(root.transform.position, root.transform.rotation);
+        targetRoot.TeleportRoot(srcRoot.position, srcRoot.rotation);
         if (resetJoints)ResetJoints(targets);
 
        // root.gameObject.SetActive(true);
-        if(stabilizer != null) stabilizer.connectedArticulationBody = root;
+        if(stabilizer != null) stabilizer.connectedArticulationBody = targetRoot;
 
         gameObject.SetActive(true);
 
