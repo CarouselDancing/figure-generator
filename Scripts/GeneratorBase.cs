@@ -98,6 +98,7 @@ public abstract class GeneratorBase : MonoBehaviour
 
     public void CreatePhyscisBody(Transform node, Transform parent, bool ignore)
     {
+        if(node == null)return;
         if(IgnoreList.Count > 0 && IgnoreList.Contains(node.name))return;
         bool rotate = false;
         float scale = 1;
