@@ -88,6 +88,13 @@ public class ArticulationBodyFigureGenerator : GeneratorBase
         o.transform.parent = parent;
     }
 
+    protected override void CreateHandBall(Transform node, Transform parent, float radius)
+    {
+        ArticulationBody ab = node.gameObject.AddComponent<ArticulationBody>();
+        ab.jointType = ArticulationJointType.FixedJoint;
+        SphereCollider sc = node.gameObject.AddComponent<SphereCollider>();
+        sc.radius = radius;
+    }
 
     protected override void CreatePrefabBodyV1(Transform node, Transform parent, GameObject prefab, Vector3 offset)
     {

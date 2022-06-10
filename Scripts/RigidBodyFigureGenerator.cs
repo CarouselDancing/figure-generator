@@ -66,6 +66,25 @@ public class RigidBodyFigureGenerator : GeneratorBase
     }
 
 
+    protected override void CreateHandBall(Transform node, Transform parent, float radius)
+    {
+        Rigidbody rb = node.gameObject.AddComponent<Rigidbody>();
+        rb.isKinematic = isKinematic;
+        SphereCollider sc = node.gameObject.AddComponent<SphereCollider>();
+        sc.radius = radius;
+        if(!isKinematic){
+        var joint = rb.gameObject.AddComponent<ConfigurableJoint>();
+            joint.connectedBody = parent.GetComponent<Rigidbody>();
+            joint.xMotion = ConfigurableJointMotion.Locked;
+            joint.yMotion = ConfigurableJointMotion.Locked;
+            joint.zMotion = ConfigurableJointMotion.Locked;
+            joint.angularXMotion = ConfigurableJointMotion.Locked;
+            joint.angularYMotion = ConfigurableJointMotion.Locked;
+            joint.angularZMotion = ConfigurableJointMotion.Locked;
+        }
+    }
+
+
     protected override void CreatePrefabBodyV1(Transform node, Transform parent, GameObject prefab, Vector3 offset)
     {
         var o = GameObject.Instantiate(prefab);
