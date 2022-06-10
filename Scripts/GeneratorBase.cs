@@ -46,6 +46,7 @@ public abstract class GeneratorBase : MonoBehaviour
     public int figureType =0;
     public List<string> IgnoreList;
     public float handRadius = 0.05f;
+    public bool useHandBalls = true;
 
     // Start is called before the first frame update
     void Start()
@@ -183,7 +184,7 @@ public abstract class GeneratorBase : MonoBehaviour
         if (endEffectors.Contains(node.name))
         {
             
-            CreateHandBall(node, parent, handRadius);
+            if(useHandBalls)CreateHandBall(node, parent, handRadius);
             return;
         }
         for (int i = 0; i < nChildren; i++)
