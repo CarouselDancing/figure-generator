@@ -58,6 +58,8 @@ public class FigureGeneratorSettings : MonoBehaviour
     public int figureType =0;
 
     public bool disableLimits;
+    public List<string> upperBodyNames;
+    public int solverIterations = 255;// 255 is used to make stabilizer work
    // public PhysicsMaterial actorMaterial;
 }
 
