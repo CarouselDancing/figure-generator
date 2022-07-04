@@ -13,20 +13,10 @@ public class PhysicsPoseProvider : PoseProviderBase
     public string rootName;
     public string armatureName = "";
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-      UpdatePose();
-      
-    }
-
-   virtual public void UpdatePose(){
-
-   }
 
     override public void ResetToIdle(){
 
-   }
+    }
 
     public void CopyStatesToRB(GameObject target)
     {
@@ -47,7 +37,7 @@ public class PhysicsPoseProvider : PoseProviderBase
     {
        Debug.Log("CopyStatesTo"+name+target.name);
        gameObject.SetActive(false);
-        UpdatePose();
+       // UpdatePose();
         var targets = target.GetComponentsInChildren<ArticulationBody>().ToList();
         var targetRoot = targets.FirstOrDefault(x => x.isRoot);
         if(targetRoot == null){
