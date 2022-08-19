@@ -15,6 +15,7 @@ public class RigidBodyFigureGenerator : GeneratorBase
     
 
     public bool isKinematic=true;
+    public bool hideMesh=true;
 
     protected override void CreateHipsBody(Transform node)
     {
@@ -50,6 +51,7 @@ public class RigidBodyFigureGenerator : GeneratorBase
     {
 
         var o = GameObject.Instantiate(headPrefab);
+        if(hideMesh)o.GetComponent<MeshRenderer>().enabled = false;
         var ab = o.GetComponent<ArticulationBody>();
         float mass = ab.mass;
         DestroyImmediate(ab);
@@ -88,6 +90,7 @@ public class RigidBodyFigureGenerator : GeneratorBase
     protected override void CreatePrefabBodyV1(Transform node, Transform parent, GameObject prefab, Vector3 offset)
     {
         var o = GameObject.Instantiate(prefab);
+        //if(hideMesh)o.GetComponent<MeshRenderer>().enabled = false;
         var ab = o.GetComponent<ArticulationBody>();
         float mass = ab.mass;
         DestroyImmediate(ab);
@@ -107,6 +110,7 @@ public class RigidBodyFigureGenerator : GeneratorBase
     protected override void CreatePrefabBodyV2(Transform node, Transform parent, GameObject prefab, Vector3 offset)
     {
         var o = GameObject.Instantiate(prefab);
+        //if(hideMesh)o.GetComponent<MeshRenderer>().enabled = false;
         o.transform.position = parent.position + offset;
         o.transform.rotation *= root.rotation;
         while (o.transform.childCount > 0)
@@ -174,6 +178,7 @@ public class RigidBodyFigureGenerator : GeneratorBase
             copyReference(referenceBody, rb);
         }
         capsuleObject1.GetComponent<MeshRenderer>().material = mat;
+        if(hideMesh)capsuleObject1.GetComponent<MeshRenderer>().enabled = false;
         var capsule = capsuleObject1.AddComponent<CapsuleCollider>();
         if (!createColliderAsChild) capsule.direction = 0;
         capsule.radius = scale * width;
@@ -210,6 +215,7 @@ public class RigidBodyFigureGenerator : GeneratorBase
              createJoint(rb2, rb.transform, true);
          }
         capsuleObject2.GetComponent<MeshRenderer>().material = mat;
+        if(hideMesh)capsuleObject2.GetComponent<MeshRenderer>().enabled = false;
         var capsule2 = capsuleObject2.AddComponent<CapsuleCollider>();
         if (!createColliderAsChild) capsule2.direction = 0;
         capsule2.radius = scale * width;
@@ -301,6 +307,7 @@ public class RigidBodyFigureGenerator : GeneratorBase
         }
 
         capsuleObject.GetComponent<MeshRenderer>().material = mat;
+        if(hideMesh)capsuleObject.GetComponent<MeshRenderer>().enabled = false;
         var capsule = capsuleObject.AddComponent<CapsuleCollider>();
         if (!createColliderAsChild && rotate)
         {
