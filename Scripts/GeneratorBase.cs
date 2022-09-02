@@ -45,8 +45,11 @@ public abstract class GeneratorBase : MonoBehaviour
     public int version = 1;
     public int figureType =0;
     public List<string> IgnoreList;
+    public bool disableLimits;
+    public int solverIterations = 255;//255 is used to make stabilizer work
     public float handRadius = 0.05f;
     public bool useHandBalls = true;
+    public Vector3 handCenterOffset = new Vector3(0,0,0);
 
     // Start is called before the first frame update
     void Start()

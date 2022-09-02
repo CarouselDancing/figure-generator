@@ -61,6 +61,8 @@ public class FigureGeneratorSettings : MonoBehaviour
     public List<string> upperBodyNames;
     public int solverIterations = 255;// 255 is used to make stabilizer work
    // public PhysicsMaterial actorMaterial;
+    public Vector3 handCenterOffset;
+    public bool useHandBalls = true;
 }
 
 

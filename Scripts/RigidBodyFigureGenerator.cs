@@ -72,10 +72,10 @@ public class RigidBodyFigureGenerator : GeneratorBase
     {
         Rigidbody rb = node.gameObject.AddComponent<Rigidbody>();
         rb.isKinematic = isKinematic;
-        SphereCollider sc = node.gameObject.AddComponent<SphereCollider>();
-        sc.radius = radius;
+        //CapsuleCollider sc = node.gameObject.AddComponent<CapsuleCollider>();
+        //sc.radius = radius;
         if(!isKinematic){
-        var joint = rb.gameObject.AddComponent<ConfigurableJoint>();
+            var joint = rb.gameObject.AddComponent<ConfigurableJoint>();
             joint.connectedBody = parent.GetComponent<Rigidbody>();
             joint.xMotion = ConfigurableJointMotion.Locked;
             joint.yMotion = ConfigurableJointMotion.Locked;

@@ -18,8 +18,6 @@ public class ArticulationBodyFigureGenerator : GeneratorBase
     public bool RootImmovable = false;
     public HumanBodyBones torsoReference = HumanBodyBones.UpperChest;
     int numActionDims;
-    public bool disableLimits;
-    public int solverIterations = 255;//255;//255 is used to make stabilizer work
 
     override public void Generate()
     {
